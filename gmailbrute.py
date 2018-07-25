@@ -11,9 +11,13 @@ print('''
 import smtplib
 from os import system
 
-smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
-smtpserver.ehlo()
-smtpserver.starttls()
+smtp_host = 'smtp.gmail.com'
+smtp_port = 465
+smtpserver = smtplib.SMTP_SSL()
+smtpserver.connect(smtp_host, smtp_port)
+# smtpserver.ehlo()
+# smtpserver.starttls()
+smtpserver.ehlo
 
 do = raw_input('''
 		Choose any number ?
@@ -51,5 +55,4 @@ if do == '2':
 
         except smtplib.SMTPAuthenticationError:
             print("[!] password incorrect :")
-
 
